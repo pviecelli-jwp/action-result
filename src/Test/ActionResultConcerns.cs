@@ -17,13 +17,25 @@ namespace Action_Result_Concerns
         }
 
         [Test]
-        public void Success_UnwrapOr()
+        public void Success_UnwrapOrValue()
         {
             var expected = 100;
             var result = ActionResult<int, string>.Failure("Action failed");
 
             Assert.IsFalse(result.IsSuccess);
             Assert.AreEqual(expected, result.UnwrapOr(expected));
+            Assert.IsNotNull(result.UnwrapErr());
+            Assert.AreEqual(default(int), result.Unwrap());
+        }
+
+        [Test]
+        public void Success_UnwrapOrFunction()
+        {
+            var expected = 100;
+            var result = ActionResult<int, string>.Failure("Action failed");
+
+            Assert.IsFalse(result.IsSuccess);
+            Assert.AreEqual(expected + 10, result.UnwrapOr(() => expected + 10));
             Assert.IsNotNull(result.UnwrapErr());
             Assert.AreEqual(default(int), result.Unwrap());
         }
