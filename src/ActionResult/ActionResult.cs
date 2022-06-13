@@ -4,7 +4,7 @@
     {
         internal T? Value { get; set; }
         internal E? Error { get; set; }
-        public bool IsSuccess { get; set; }
+        public bool IsSuccess { get; }
 
         internal ActionResult(E error)
         {
