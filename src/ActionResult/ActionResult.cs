@@ -4,7 +4,7 @@
     {
         internal T? Value { get; set; }
         internal E? Error { get; set; }
-        public bool IsSuccess { get; }
+        public bool IsSuccess { get; protected set; }
 
         internal ActionResult(E error)
         {
@@ -18,16 +18,6 @@
             Value = value;
             IsSuccess = true;
             Error = default;
-        }
-
-        public static ActionResult<T, E> Success(T value)
-        {
-            return new ActionResult<T, E>(value);
-        }
-
-        public static ActionResult<T, E> Failure(E result)
-        {
-            return new ActionResult<T, E>(result);
         }
     }
 }
