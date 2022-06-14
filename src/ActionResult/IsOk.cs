@@ -5,10 +5,5 @@
         internal IsOk(T value) : base(value)
         {
         }
-
-        public static IsOk<T, E> Success(T value)
-        {
-            return new IsOk<T, E>(value);
-        }
     }
 }

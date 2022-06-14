@@ -19,5 +19,15 @@
             IsSuccess = true;
             Error = default;
         }
+
+        public static ActionResult<T, E> Success(T value)
+        {
+            return new IsOk<T, E>(value);
+        }
+
+        public static ActionResult<T, E> Failure(E error)
+        {
+            return new IsErr<T, E>(error);
+        }
     }
 }
